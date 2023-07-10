@@ -10,5 +10,5 @@ const router: RouteOptions = {
 }
 
 export {
-    router as insertRoute
+    router as insertNFTRoute
 }

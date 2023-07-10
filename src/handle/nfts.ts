@@ -2,9 +2,9 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { CollectionNft } from "../database/connect";
 
 type InputParams = {
-  address: string;
-  page?: number;
-  pageSize?: number;
+  address: string
+  page?: number
+  pageSize?: number
 };
 export const list_nfts_get = async (
   request: FastifyRequest,

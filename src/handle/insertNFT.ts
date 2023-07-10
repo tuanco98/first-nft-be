@@ -2,22 +2,28 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { CollectionNft } from "../database/connect";
 
 type InputParams = {
-    address: string
-    name: string
+    name?: string
     token_id: number
+    owner_address: string
+    img_uri: string
+    description: string
 }
-
+const validateInput = (input: InputParams) => {
+    const {name, token_id, owner_address, img_uri, description} = input;
+    if (!token_id) throw new Error('missing token id')
+    if (!owner_address) throw new Error('xxx')
+    if (!img_uri) throw new Error('xxx')
+    if (!description) throw new Error('xxx')
+}
 export const insert_NFT = async (
     request: FastifyRequest,
     reply: FastifyReply
 ) => {
-    const {address, name, token_id} = request.body as InputParams;
+    const { name, token_id, owner_address, img_uri, description } = request.body as InputParams;
 
-    if (!address) throw new Error('missing name')
-    if (!name) throw new Error('missing address')
-    if (!token_id) throw new Error('missing token id')
+    validateInput({ name, token_id, owner_address, img_uri, description })
     
-    await CollectionNft.insertOne({address: address, name: name, token_id: token_id, create_at: new Date(), update_at: new Date()})
+    await CollectionNft.insertOne({ name: name, token_id: token_id, owner_address: owner_address, img_uri: img_uri, description: description, create_at: new Date(), update_at: new Date() })
     
-    return reply.send({address: address, name: name, token_id: token_id})
+    return reply.send({ name: name, token_id: token_id, owner_address: owner_address, img_uri: img_uri, description: description })
 }

@@ -6,7 +6,7 @@ const handler = list_nfts_get
 const router: RouteOptions = {
     method: "GET",
     url: "/nfts",
-    handler,
+    handler
 }
 
 export {

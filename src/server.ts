@@ -2,9 +2,10 @@
 import { Connect } from './database/connect'
 import Fastify from "fastify"
 import { nftsRoute } from './routers/nfts';
-import { insertRoute } from './routers/insertNFT';
+import { insertNFTRoute } from './routers/insertNFT';
 import { updateRoute } from './routers/update';
 import { PORT_SERVER } from './config';
+import { nft_inf_get_route } from './routers/nft_inf';
 
 const fastify = Fastify({
   logger: true,
@@ -12,8 +13,9 @@ const fastify = Fastify({
 
 fastify.register((fastify, opts, done) => {
   fastify.route(nftsRoute)
-  fastify.route(insertRoute)
+  fastify.route(insertNFTRoute)
   fastify.route(updateRoute)
+  fastify.route(nft_inf_get_route)
   done()
 })
 
