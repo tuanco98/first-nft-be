@@ -1,10 +1,10 @@
 // Import the framework and instantiate it
-import { Connect } from './database/connect'
+import { connectMongoDb } from '../infra/database/connect'
 import Fastify from "fastify"
 import { nftsRoute } from './routers/nfts';
 import { insertNFTRoute } from './routers/insertNFT';
 import { updateRoute } from './routers/update';
-import { PORT_SERVER } from './config';
+import { PORT_SERVER } from '../config';
 import { nft_inf_get_route } from './routers/nft_inf';
 
 const fastify = Fastify({
@@ -21,10 +21,9 @@ fastify.register((fastify, opts, done) => {
 
 export type nftType = { name: string, address: string }
 
-const main = async () => {
+export const connectServer = async () => {
   // Run the server!
   try {
-    await Connect()
     await fastify.listen({ port: PORT_SERVER, host: '0.0.0.0' });
     console.log(` Server running at port: ${PORT_SERVER}`)
 
@@ -33,4 +32,3 @@ const main = async () => {
     process.exit(1);
   }
 };
-main()

@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/server.ts"
+    "dev": "ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "fastify": "^4.19.2",
-    "mongodb": "^5.7.0"
+    "mongodb": "^5.7.0",
+    "viem": "^1.2.12",
+    "web3": "^4.0.2"
   },
   "devDependencies": {
     "@types/node": "^20.4.1",

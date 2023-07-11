@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CollectionNft } from "../database/connect";
+import { CollectionNft } from "../../infra/database/connect";
 
 type InputParams = {
   address: string

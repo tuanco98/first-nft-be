@@ -1,6 +1,6 @@
-import {Collection, MongoClient, ObjectId} from 'mongodb'
+import {Collection, MongoClient} from 'mongodb'
 import { Nft } from './models/model.nft';
-import { MONGO_URI } from '../config';
+import { MONGO_URI } from '../../config';
 import { NFT_inf } from './models/model.nft_inf';
 
 const client = new MongoClient(MONGO_URI);
@@ -8,7 +8,7 @@ let dbo
 export let CollectionNft: Collection<Nft>
 export let CollectionNft_inf: Collection<NFT_inf>
 
-export async function Connect(){
+export async function connectMongoDb(){
     /*
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      */
