@@ -1,5 +1,4 @@
 // Import the framework and instantiate it
-import { connectMongoDb } from '../infra/database/mongo'
 import Fastify from "fastify"
 import { nftsRoute } from './routers/nfts';
 import { insertNFTRoute } from './routers/insertNFT';

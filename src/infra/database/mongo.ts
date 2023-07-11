@@ -9,22 +9,26 @@ import { INft, NftIndexes } from "./models/model.nft";
 import { MONGO_DB_NAME, MONGO_URI } from "../../config";
 import { errorConsoleLog, successConsoleLog } from "../../lib/color-log";
 import { ContractEventIndexes, IContractEvent } from "./models/model.contract_event";
+import { INft_info, InfoNftIndexes } from "./models/model.nft_inf";
 
 let mongo: MongoClient;
 
 const collections: {
 	nfts: Collection<INft>;
+	nft_info: Collection<INft_info>;
 	contract_events: Collection<IContractEvent>;
 } = new Object() as any;
 
 const COLLECTION_NAMES = {
 	nfts: "nfts",
 	contract_events: "contract_events",
+	nft_info: "nft_info",
 };
 
 const indexes = {
 	nfts: NftIndexes,
 	contract_events: ContractEventIndexes,
+	nft_info: InfoNftIndexes,
 };
 
 const checkModelInDb = async (

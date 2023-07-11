@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { CollectionNft } from "../../infra/database/mongo";
 import { ObjectId } from "mongodb";
+import { DAO } from "../../infra/database/methods";
 
 type InputParams = {
   id: string;
@@ -23,7 +23,7 @@ export const update = async (request: FastifyRequest, reply: FastifyReply) => {
   try {
     const { id,  name, token_id, owner_address, img_uri, description} = request.body as InputParams
     validateInput({id, token_id, owner_address, img_uri, description})
-    await CollectionNft.updateOne(
+    await DAO.nft.common.updateOne(
       { _id: new ObjectId(id) },
       { $set: {name: name, token_id: token_id, owner_address: owner_address, img_uri: img_uri, description: description} }
     );

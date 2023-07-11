@@ -1,5 +1,5 @@
-import { FIRST_NFT_CONTRACT_ADDRESS } from "../../../config";
-import { lowerCase } from "../../../lib/utils";
+import { CONSUME_START_BLOCK, CONSUME_STEP_BLOCK, FIRST_NFT_CONTRACT_ADDRESS } from "../../../config";
+import { web3 } from "../web3";
 import { FIRST_NFT_CONTRACT_ABI } from "./fisrt_nft/abi";
 
 type ContractInfo = {
@@ -11,20 +11,14 @@ type ContractInfo = {
 const getContractInfo: (contract: string) => ContractInfo | null = (
 	_contract: string,
 ) => {
-	const contract = lowerCase(_contract);
+	const contract = web3.utils.toChecksumAddress(_contract);
 	switch (contract) {
-		// case TRADING_CONTRACT_ADDRESS: return {
-		//     address: TRADING_CONTRACT_ADDRESS,
-		//     abi: TRADING_ABI,
-		//     init_start_block: TRADING_CONTRACT_START_BLOCK,
-		//     step_block: TRADING_CONTRACT_STEP_BLOCK
-		// }
 		case FIRST_NFT_CONTRACT_ADDRESS:
 			return {
 				address: FIRST_NFT_CONTRACT_ADDRESS,
 				abi: FIRST_NFT_CONTRACT_ABI,
-				init_start_block: 0,
-				step_block: 1000,
+				init_start_block: CONSUME_START_BLOCK,
+				step_block: CONSUME_STEP_BLOCK,
 			};
 		default:
 			return null;

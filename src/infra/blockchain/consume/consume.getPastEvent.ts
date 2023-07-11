@@ -5,6 +5,7 @@ import { ContractInfo } from '../contracts';
 import { MintEventName } from '../contracts/fisrt_nft/event';
 import { DAO } from '../../database/methods';
 import { FirstNftHandle } from '../contracts/fisrt_nft/events_handle.ts';
+import { isLogging } from '../../../cron/cron.update_latest_block';
 
 enum AllEventName {
 	AllEvents = "AllEvents",
@@ -25,9 +26,9 @@ export const getPastEvents = async (
 ) => {
 	try {
 		const events = await GetPastEvents(contract_info, options);
-		// if (isLogging() || events.length) {
-			// console.log(`-> consume smart contract ${contract_info.address} info: `, { ...options, ...{ total_event: events.length } })
-		// }
+		if (isLogging() || events.length) {
+			console.log(`-> consume smart contract ${contract_info.address} info: `, { ...options, ...{ total_event: events.length } })
+		}
 		for (const data of events) {
 			//Check already consume this txid
 			const { transactionHash, event, blockNumber, address, logIndex } =

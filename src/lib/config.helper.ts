@@ -1,4 +1,3 @@
-import { Address } from "viem";
 import { lowerCase } from "./utils";
 
 const getEnvString = (key: string) => {
@@ -7,7 +6,7 @@ const getEnvString = (key: string) => {
 };
 const getEnvAddress = (key: string) => {
 	const envString = getEnvString(key)
-	return lowerCase(envString) as Address;
+	return lowerCase(envString) as string;
 };
 const getEnvBigInt = (key: string) => {
 	if (!process.env[key]) throw new Error(`${key} must be provided`);
