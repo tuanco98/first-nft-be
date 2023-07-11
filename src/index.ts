@@ -1,12 +1,15 @@
 import { connectServer } from "./Server/fastify"
-import { connectMongoDb } from "./infra/database/connect"
+import { cronService } from "./cron"
+import { connectMongo } from "./infra/database/mongo"
 
 (async() => {
     try {
         // init connect 
         await Promise.all([
-            connectMongoDb()
+            connectMongo()
         ])
+        // init cron
+        cronService.blockChain()
         // init server
         await connectServer()
     } catch (error) {

@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { CollectionNft } from "../../infra/database/connect";
+import { CollectionNft } from "../../infra/database/mongo";
 import { ObjectId } from "mongodb";
 
 type InputParams = {

@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cron": "^2.3.1",
     "fastify": "^4.19.2",
+    "ioredis": "^5.3.2",
     "mongodb": "^5.7.0",
-    "viem": "^1.2.12",
     "web3": "^4.0.2"
   },
   "devDependencies": {

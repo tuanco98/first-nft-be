@@ -1,4 +1,4 @@
-import { collections } from "../connect";
+import { collections } from "../mongo";
 
 const getDAO = () => ({
 	common: collections.nfts,

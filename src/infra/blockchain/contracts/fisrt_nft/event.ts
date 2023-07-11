@@ -10,9 +10,9 @@ type TMintEvent = {
 	reason: string;
 };
 
-type TFirstNftRawEvent = AllString<TMintEvent>;
+type TMintRawEvent = AllString<TMintEvent>;
 
-const convertCopyFailedRawEvent = (raw_event: TFirstNftRawEvent) => {
+const convertCopyFailedRawEvent = (raw_event: TMintRawEvent) => {
 	const event: TMintEvent = {
 		id: raw_event.id,
 		copier: raw_event.copier,
@@ -23,6 +23,7 @@ const convertCopyFailedRawEvent = (raw_event: TFirstNftRawEvent) => {
 
 
 export {
+    TMintRawEvent,
 	convertCopyFailedRawEvent,
 	EventsName as MintEventName,
 };

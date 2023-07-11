@@ -1,21 +1,18 @@
-import {
-	ANTI_REORG_BLOCK_NUMBER,
-	AVG_BLOCK_TIME_SEC,
-} from "../../../../config";
-import { MILLISECOND_PER_ONE_SEC } from "../../../../lib/constants";
-import { ErrorHandler } from "../../../../lib/error_handler";
-import { setCurrentBlockNumberConsume } from "../../../cache/cache.current_block_number_consume";
-import { getLatestBlockNumber } from "../../../cache/cache.latest_block_number";
-import { ContractInfo } from "../contract";
+import { ANTI_REORG_BLOCK_NUMBER, AVG_BLOCK_TIME_SEC } from "../../../config";
+import { MILLISECOND_PER_ONE_SEC } from "../../../lib/constants";
+import { ErrorHandler } from "../../../lib/error_handler";
+import { setCurrentBlockNumberConsume } from "../../cache/cache.current_block_number_consume";
+import { getLatestBlockNumber } from "../../cache/cache.latest_block_number";
+import { ContractInfo } from "../contracts";
 import { getPastEvents } from "./consume.getPastEvent";
 import { getConsumeOptions } from "./consume.helper";
 
 export const intervalConsume = async (
-	start_block: bigint,
+	start_block: number,
 	contract_info: ContractInfo,
 ) => {
 	let _start_block = start_block;
-	let new_start_block: bigint | null = null;
+	let new_start_block: number | null = null;
 	try {
 		const latest_block = await getLatestBlockNumber();
 		if (!latest_block) return;
@@ -32,7 +29,7 @@ export const intervalConsume = async (
 			contract_info.step_block,
 		);
 		await getPastEvents(options, contract_info);
-		new_start_block = options.toBlock + 1n;
+		new_start_block = options.toBlock + 1;
 		await setCurrentBlockNumberConsume(contract_info.address, new_start_block);
 	} catch (e) {
 		ErrorHandler(
