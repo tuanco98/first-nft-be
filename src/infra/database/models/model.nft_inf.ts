@@ -1,4 +1,4 @@
-import { ObjectId } from "mongodb";
+import { IndexDescription, ObjectId } from "mongodb";
 
 type SocialType = 'twitter'|'discord'|'website'
 interface Social {
@@ -7,7 +7,7 @@ interface Social {
 }
 type ChainNetwork = 'etherum' | 'bsc' 
 
-export interface NFT_inf {
+export interface INft_info {
     _id?: ObjectId
     contract_address: string
     chain_network: ChainNetwork
@@ -15,3 +15,9 @@ export interface NFT_inf {
     social: Social[]
     image_uri?: string
 }
+export const InfoNftIndexes: IndexDescription[] = [
+	{ key: { txid: 1, blockNumber: 1 }, unique: true, background: true },
+	{ key: { txid: 1 }, background: true },
+	{ key: { eventName: 1 }, background: true },
+	{ key: { result: 1 }, background: true },
+];
