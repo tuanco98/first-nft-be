@@ -18,7 +18,7 @@ const getDAO =  () => ({
 	InsertOneNft: (nft: INft, session?: ClientSession) => {
 		return collections.nfts.updateOne(
 		  { mint_txid: nft.mint_txid },
-		  { $setOnInsert: { nft } },
+		  { $setOnInsert: nft },
 		  { session, upsert: true }
 		);
 	  },
