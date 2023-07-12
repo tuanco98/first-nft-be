@@ -1,6 +1,6 @@
-import { Mint } from './mint';
+import { Transfer } from './transfer';
 const EventHandler = {
-	Mint,
+	Transfer,
 };
 
 export { EventHandler as FirstNftHandle };

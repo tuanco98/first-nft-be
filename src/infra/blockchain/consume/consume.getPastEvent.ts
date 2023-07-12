@@ -2,9 +2,9 @@ import { FIRST_NFT_CONTRACT_ADDRESS } from './../../../config';
 import { EventLog } from "web3-eth-contract";
 import { GetPastEvents } from "./consume.helper";
 import { ContractInfo } from '../contracts';
-import { MintEventName } from '../contracts/fisrt_nft/event';
+import { TransferEventName } from '../contracts/first_nft/event';
 import { DAO } from '../../database/methods';
-import { FirstNftHandle } from '../contracts/fisrt_nft/events_handle.ts';
+import { FirstNftHandle } from '../contracts/first_nft/events_handle.ts';
 import { isLogging } from '../../../cron/cron.update_latest_block';
 
 enum AllEventName {
@@ -16,7 +16,7 @@ export type GetPastEventOptionsType = {
 };
 export const AllEvents = {
 	...AllEventName,
-	...MintEventName,
+	...TransferEventName,
 };
 export type TAllEvents = keyof typeof AllEvents;
 export type TEventData = EventLog
@@ -44,10 +44,10 @@ export const getPastEvents = async (
 			});
 			if (event_data && event_data.result === "SUCCESS") continue;
 			switch (event) {
-				case AllEvents.Mint:
+				case AllEvents.Transfer:
 					switch (contract_info.address) {
 						case FIRST_NFT_CONTRACT_ADDRESS:
-							await FirstNftHandle.Mint(data);
+							await FirstNftHandle.Transfer(data);
 							break;
 						default:
 							break;
