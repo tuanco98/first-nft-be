@@ -1,20 +1,20 @@
 import { ContractEventType, getContractEventDAO } from "./dao.contract_events";
-import { NftInfoType, getNftInfoDAO } from "./dao.inf_nft";
+import { CollectionInfoType, getCollectionInfoDAO } from "./dao.collection_info";
 import { getNftDao, nftType } from "./dao.nft";
 
 type DAOType = {
-	nft: nftType;
+	nfts: nftType;
     contract_events: ContractEventType;
-    nft_info: NftInfoType;
+    collection_info: CollectionInfoType;
 };
 
 const DAO: DAOType = new Object() as any;
 
 const initDAO = () => {
 	console.log(`init DAO ...`);
-	DAO.nft = getNftDao();
+	DAO.nfts = getNftDao();
 	DAO.contract_events = getContractEventDAO();
-	DAO.nft_info = getNftInfoDAO();
+	DAO.collection_info = getCollectionInfoDAO();
 };
 
 export { initDAO, DAO };
