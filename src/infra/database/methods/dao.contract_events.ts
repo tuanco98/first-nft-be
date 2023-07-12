@@ -10,7 +10,7 @@ const getDAO = () => ({
   ) => {
     return collections.contract_events.updateOne(
       { txid: contract_event.txid, logIndex: contract_event.logIndex },
-      { $setOnInsert: { contract_event } },
+      { $setOnInsert: contract_event },
       { session, upsert: true }
     );
   },
