@@ -1,3 +1,5 @@
+import { ClientSession } from "mongodb";
+import { INft } from "../models/model.nft";
 import { collections } from "../mongo";
 
 const getDAO =  () => ({
@@ -12,7 +14,14 @@ const getDAO =  () => ({
 	},
 	GetTotal: (address: string) => {
 		return collections.nfts.countDocuments({address});
-	}
+	},
+	InsertOneNft: (nft: INft, session?: ClientSession) => {
+		return collections.nfts.updateOne(
+		  { mint_txid: nft.mint_txid },
+		  { $setOnInsert: { nft } },
+		  { session, upsert: true }
+		);
+	  },
 });
 
 
