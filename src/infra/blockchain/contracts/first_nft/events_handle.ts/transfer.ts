@@ -14,7 +14,7 @@ const TransferCallback: EventHandlerCallback = async (
 		const rawEventValue = returnValues as TTransferRawEvent;
 		const eventValue = convertTransferRawEvent(rawEventValue)
 		if (NULL_ADDRESSES.includes(eventValue.from)) {
-			await DAO.nft.InsertOneNft({
+			await DAO.nfts.InsertOneNft({
 				token_id: eventValue.tokenId,
 				owner_address: eventValue.to,
 				mint_txid: transactionHash || "",
