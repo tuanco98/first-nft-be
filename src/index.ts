@@ -14,6 +14,7 @@ import { connectMongo } from "./infra/database/mongo"
         cronService.blockChain()
         // init server
         await connectServer()
+        
     } catch (error) {
         throw error
     }

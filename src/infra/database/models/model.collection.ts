@@ -7,7 +7,7 @@ interface Social {
 }
 type ChainNetwork = 'etherum' | 'bsc' 
 
-export interface INft_info {
+export interface ICollection {
     _id?: ObjectId
     contract_address: string
     chain_network: ChainNetwork
@@ -15,7 +15,7 @@ export interface INft_info {
     social: Social[]
     image_uri?: string
 }
-export const InfoNftIndexes: IndexDescription[] = [
+export const InfoCollection: IndexDescription[] = [
 	{ key: { txid: 1, blockNumber: 1 }, unique: true, background: true },
 	{ key: { txid: 1 }, background: true },
 	{ key: { eventName: 1 }, background: true },
