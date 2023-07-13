@@ -9,6 +9,6 @@ export const nft_detail = async (
   reply: FastifyReply
 ) => {
   const { token_id } = request.query as InputParams;
-  const fetch_data = await DAO.nfts.GetOneNFTInfo(token_id);
-  return reply.send({ data: fetch_data });
+  const fetch_data = await DAO.nfts.GetOneNFTInfo(Number(token_id));
+  return reply.send( fetch_data );
 };
