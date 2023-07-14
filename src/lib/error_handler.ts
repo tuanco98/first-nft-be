@@ -112,7 +112,7 @@ export const getErrorMessage = (error_code: string) => {
 	const code_name = `${SERVER_CODE}${error_code}`;
 	return ErrCodeMessage[code_name];
 };
-export const ErrorResponse = (data: any, msg: string) => {
+export const StandardResponse = (data: any, msg: string) => {
 	return {
 	  error: data ? false : true,
 	  errorMessage: msg,
