@@ -7,8 +7,7 @@ type InputParams = {
   owner_address: string;
 } & PagingParams;
 export const list_nfts_get = async (
-  request: FastifyRequest,
-  reply: FastifyReply
+  request: FastifyRequest
 ) => {
   try{
     const { owner_address, page = 0, pageSize = 10 } = request.query as InputParams;

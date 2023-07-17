@@ -10,6 +10,7 @@ import { MONGO_DB_NAME, MONGO_URI } from "../../config";
 import { errorConsoleLog, successConsoleLog } from "../../lib/color-log";
 import { ContractEventIndexes, IContractEvent } from "./models/model.contract_event";
 import { ICollection, InfoCollection } from "./models/model.collection";
+import { ITransactionsReceipt, TransactionsIndex } from "./models/model.transaction";
 
 let mongo: MongoClient;
 
@@ -17,18 +18,21 @@ const collections: {
 	nfts: Collection<INft>;
 	collection_info: Collection<ICollection>;
 	contract_events: Collection<IContractEvent>;
+	transactions_receipt: Collection<ITransactionsReceipt>
 } = new Object() as any;
 
 const COLLECTION_NAMES = {
 	nfts: "nfts",
 	contract_events: "contract_events",
 	collection_info: "collection_info",
+	transactions_receipt: "transactions_receipt"
 };
 
 const indexes = {
 	nfts: NftIndexes,
 	contract_events: ContractEventIndexes,
 	collection_info: InfoCollection,
+	transactions_receipt: TransactionsIndex
 };
 
 const checkModelInDb = async (
