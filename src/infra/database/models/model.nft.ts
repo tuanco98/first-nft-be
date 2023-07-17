@@ -10,6 +10,7 @@ export interface INft {
     description?: string
     create_at: Date
     update_at: Date
+    mint_at: Date
 }
 export const NftIndexes: IndexDescription[] = [
 	{ key: { token_id: 1 }, unique: true, background: true },
