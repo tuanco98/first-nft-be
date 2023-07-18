@@ -16,13 +16,14 @@ const TransferCallback: EventHandlerCallback = async (
 		const eventValue = convertTransferRawEvent(rawEventValue)
 		if (NULL_ADDRESSES.includes(eventValue.from)) {
 			const block = await web3.eth.getBlock(blockNumber)
+			const timestamp_ms = Number(block.timestamp * 1000n)
 			await DAO.nfts.InsertOneNft({
 				token_id: eventValue.tokenId,
 				owner_address: eventValue.to,
 				mint_txid: transactionHash || "",
 				create_at: new Date(),
 				update_at: new Date(),
-				mint_at: new Date(Number(block.timestamp * 1000n))
+				mint_at: new Date(timestamp_ms)
 			})
 		}
 	} catch (e) {
