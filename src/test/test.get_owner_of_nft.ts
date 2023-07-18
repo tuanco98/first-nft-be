@@ -8,13 +8,13 @@ import { connectMongo } from "../infra/database/mongo";
 import { DAO } from "../infra/database/methods";
 
 export const contract = new Contract(ABI, FIRST_NFT_CONTRACT_ADDRESS, web3);
-// get owner of nft
-// export const get_owner_of_nft = async () =>
-// {
-//     const owner_of_nft = await contract.methods.ownerOf(2).call();
+//get owner of nft
+export const get_owner_of_nft = async () =>
+{
+    const owner_of_nft = await contract.methods.ownerOf(2).call();
 
-//     console.log(owner_of_nft)
-// }
+    console.log(owner_of_nft)
+}
 const account = web3.eth.accounts.wallet.add(PRIVATE_KEY);
 
 

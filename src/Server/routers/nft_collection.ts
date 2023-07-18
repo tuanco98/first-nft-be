@@ -8,4 +8,4 @@ const router: RouteOptions = {
   url: "/collection-inf-get",
   handler,
 };
-export { router as collection_inf_get_route };
+export { router as collectionInfGetRoute };

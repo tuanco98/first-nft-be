@@ -7,9 +7,9 @@ const getDAO = () => ({
   GetOneNFTInfo: (token_id: number) => {
     return collections.nfts.findOne({ token_id });
   },
-  GetAllNFT: (owner_address: string, page = 0, pageSize = 10) => {
+  GetAllNFT: ( owner_address: string, page = 0, pageSize = 10) => {
     return collections.nfts
-      .find({ owner_address })
+      .find({owner_address})
       .limit(page)
       .skip(page * pageSize)
       .toArray();

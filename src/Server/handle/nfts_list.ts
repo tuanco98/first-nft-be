@@ -1,22 +1,25 @@
-import { FastifyReply, FastifyRequest } from "fastify";
+import { FastifyRequest } from "fastify";
 import { DAO } from "../../infra/database/methods";
 import { PagingParams } from "../../lib/paging";
 import { ERROR_CODE, ErrMsg, StandardResponse } from "../../lib/error_handler";
+import { getAddressRecover, verifySignature } from "../../lib/utils";
 
-type InputParams = {
-  owner_address: string;
-} & PagingParams;
+type InputParams = PagingParams;
 export const list_nfts_get = async (
   request: FastifyRequest
 ) => {
   try{
-    const { owner_address, page = 0, pageSize = 10 } = request.query as InputParams;
-    if(!owner_address) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'owner address');
-    const [total, fetch_data] = await Promise.all([
+    const {  page = 0, pageSize = 10 } = request.query as InputParams;
+    const { message, signature } = request.headers
+
+    if(!message) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'message');
+    if(!signature) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'signature');
+    const owner_address =  getAddressRecover(message as string, signature as string)
+    const [total, data] = await Promise.all([
       DAO.nfts.GetTotal({owner_address}),
-      DAO.nfts.GetAllNFT(owner_address, page, pageSize)
+      DAO.nfts.GetAllNFT(owner_address , page, pageSize)
     ])
-    return StandardResponse([total, fetch_data], 'Success!');
+    return StandardResponse({total, data}, 'Success!');
   }
   catch(e: any){
     return StandardResponse(null, e.message);

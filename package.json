@@ -12,7 +12,7 @@
     "dep": "docker-compose -f docker-compose.yml up --build -d",
     "dep:log": "docker-compose -f docker-compose.yml up --build",
     "dev": "ts-node src/index.ts",
-    "test": "ts-node src/test/test.get_owner_of_nft.ts"
+    "test": "ts-node src/test/test.sign.ts"
   },
   "author": "",
   "license": "ISC",

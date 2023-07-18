@@ -1,10 +1,21 @@
 
+import { web3 } from "../infra/blockchain/web3";
+
 export const sleep = async (ms: number) => {
 	await new Promise((resolver) => {
 		setTimeout(() => resolver("OK"), ms);
 	});
 };
-
+export const verifySignature = (owner_address: string, message: string, signature: string): boolean => {
+	if (web3.eth.accounts.recover(message, signature).toString() == owner_address){
+		return true;
+	} else
+		return false;
+}
+export const getAddressRecover = (message: string, signature: string) => {
+	const address = web3.eth.accounts.recover(message, signature);
+	return address;
+}
 export const createRunePackArray = (
 	runes: { runeId: number; quantity: number }[],
 ) => {

@@ -2,9 +2,11 @@
 import Fastify from "fastify";
 import { nftsRoute } from "./routers/nfts";
 import { PORT_SERVER } from "../config";
-import { collection_inf_get_route } from "./routers/nft_collection";
+import { collectionInfGetRoute } from "./routers/nft_collection";
 import { nftsDetailRoute } from "./routers/nft_detail";
 import { nftsMintGteAtGetRoute } from "./routers/nft_mint_greate_or_equal_at_time";
+import { collectionRoute } from "./routers/nft_collection_list";
+
 
 const fastify = Fastify({
   logger: true,
@@ -12,9 +14,10 @@ const fastify = Fastify({
 
 fastify.register((fastify, opts, done) => {
   fastify.route(nftsRoute);
-  fastify.route(collection_inf_get_route);
+  fastify.route(collectionInfGetRoute);
   fastify.route(nftsDetailRoute);
   fastify.route(nftsMintGteAtGetRoute);
+  fastify.route(collectionRoute);
   done();
 });
 

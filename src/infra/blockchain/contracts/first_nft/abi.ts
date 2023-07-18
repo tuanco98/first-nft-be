@@ -1,4 +1,6 @@
-export const CONTRACT_ABI = [
+import { ContractAbi } from "web3";
+
+export const CONTRACT_ABI: ContractAbi = [
   {
     inputs: [{ internalType: "string", name: "_initBaseURI", type: "string" }],
     stateMutability: "nonpayable",
