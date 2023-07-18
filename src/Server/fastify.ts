@@ -36,7 +36,7 @@ fastify.addHook("preHandler", (req, res, done) => {
 // });
 
 fastify.register((fastify, opts, done) => {
-  fastify.swagger({yaml: true})
+  // fastify.swagger({yaml: true})
   fastify.route(nftsRoute);
   fastify.route(collectionInfGetRoute);
   fastify.route(nftsDetailRoute);
