@@ -10,10 +10,3 @@ services:
       - "$PORT_SERVER:$PORT_SERVER"
     env_file: .env
     restart: always
-  cron-smurfi-be:
-    container_name: first-nft-$NODE_ENV
-    build:
-      context: .
-      dockerfile: Dockerfile.cron
-    env_file: .env
-    restart: always
