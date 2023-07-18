@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: User Management API
+  description: API quản lý danh sách người dùng
+  contact:
+    name: John Doe
+    email: john.doe@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://34.142.135.220:3003/
+    description: Local development server
+
+paths:
+  /users:
+    get:
+      summary: Lấy danh sách người dùng
+      operationId: getUsers
+      responses:
+        '200':
+          description: Danh sách người dùng đã được lấy thành công
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+    post:
+      summary: Tạo người dùng mới
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '201':
+          description: Người dùng đã được tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{userId}:
+    get:
+      summary: Lấy thông tin người dùng bằng ID
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID của người dùng cần lấy thông tin
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Thông tin người dùng đã được lấy thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+    put:
+      summary: Cập nhật thông tin người dùng bằng ID
+      operationId: updateUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID của người dùng cần cập nhật thông tin
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+      responses:
+        '200':
+          description: Thông tin người dùng đã được cập nhật thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+    delete:
+      summary: Xóa người dùng bằng ID
+      operationId: deleteUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID của người dùng cần xóa
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Người dùng đã được xóa thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        age:
+          type: integer
+      required:
+        - id
+        - name
+        - age
+
+    NewUser:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
+      required:
+        - name
+        - age
+
+    UpdateUser:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
+      required:
+        - name
+        - age
