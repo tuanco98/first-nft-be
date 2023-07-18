@@ -11,7 +11,7 @@ import { nftsMintGteAtGetRoute } from "./routers/nft_mint_greate_or_equal_at_tim
 import { collectionRoute } from "./routers/nft_collection_list";
 import path from 'path';
 
-const swaggerDocument = YAML.load('./src/server/config.yaml');
+// const swaggerDocument = YAML.load('./src/server/config.yaml');
 
 
 const fastify = Fastify({
