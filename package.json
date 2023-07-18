@@ -6,7 +6,7 @@
   "scripts": {
     "scripts": "node script.mjs",
     "inspect": "node --inspect --max-old-space-size=4096 dist/index.js",
-    "build": "rm -rf dist && tsc",
+    "build": "tsc",
     "start": "node --max-old-space-size=4096 dist/index.js",
     "reset_consume": "ts-node src/scripts/reset_consume.ts",
     "dep": "docker-compose -f docker-compose.yml up --build -d",
