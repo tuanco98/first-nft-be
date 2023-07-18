@@ -5,7 +5,7 @@ interface Social {
   type: SocialType;
   link: string;
 }
-type ChainNetwork = "etherum" | "bsc";
+type ChainNetwork = "etherum" | "bsc" | "goerli";
 
 export interface ICollection {
   _id?: ObjectId;
