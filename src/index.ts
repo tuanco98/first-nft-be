@@ -1,5 +1,6 @@
 import { connectServer } from "./Server/fastify"
 import { cronService } from "./cron"
+import { connectWeb3 } from "./infra/blockchain/web3"
 import { initRedis } from "./infra/cache/redis"
 import { connectMongo } from "./infra/database/mongo"
 
@@ -7,6 +8,7 @@ import { connectMongo } from "./infra/database/mongo"
     try {
         // init connect 
         await Promise.all([
+            connectWeb3(),
             initRedis(),
             connectMongo()
         ])

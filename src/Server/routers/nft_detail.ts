@@ -5,7 +5,7 @@ const handler = nft_detail;
 
 const router: RouteOptions = {
   method: "GET",
-  url: "/detail",
+  url: "/detail-get",
   handler,
 };
 

@@ -1,5 +1,5 @@
 import { CONSUME_START_BLOCK, CONSUME_STEP_BLOCK, FIRST_NFT_CONTRACT_ADDRESS } from "../../../config";
-import { web3 } from "../web3";
+import { first_nft_contract, web3 } from "../web3";
 import { FIRST_NFT_CONTRACT_ABI } from "./first_nft/abi";
 
 type ContractInfo = {
@@ -8,7 +8,6 @@ type ContractInfo = {
 	init_start_block: number;
 	step_block: number;
 };
-const first_nft_contract = new web3.eth.Contract(FIRST_NFT_CONTRACT_ABI, FIRST_NFT_CONTRACT_ADDRESS)
 const getInitContract = (contract_info: ContractInfo) => {
 	switch(contract_info.address) {
 		case FIRST_NFT_CONTRACT_ADDRESS:

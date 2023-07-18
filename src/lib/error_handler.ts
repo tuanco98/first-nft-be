@@ -79,11 +79,13 @@ export function ErrorHandler(e: any, args: any, funcName: string) {
 const ErrCodeMessage = {
 	FNFT000: "UNEXPECTED_ERROR",
 	
-	DEX400: "MISSING_PARAMS",
-	DEX401: "INVALID_PAGE",
-	DEX402: "INVALID_PAGESIZE",
-	DEX403: "INVALID_PARAMS",
-	DEX404: "ADDRESS_INVALID",
+	FNFT100: "SIGNATURE_INVALID",
+	
+	FNFT400: "MISSING_PARAMS",
+	FNFT401: "INVALID_PAGE",
+	FNFT402: "INVALID_PAGESIZE",
+	FNFT403: "INVALID_PARAMS",
+	FNFT404: "ADDRESS_INVALID",
 	
 	FNFT501: "SERVER_MAINTAINED",
 };
@@ -92,7 +94,7 @@ export const ERROR_CODE = {
 	//==========UNEXPECTED ERROR==========
 	UNEXPECTED_ERROR: "000",
 	//==========AUTH==============
-
+	SIGNATURE_INVALID: '100',
 	//==========FETCH DATA==========
 
 	//==========ON CHAIN==============
@@ -112,3 +114,10 @@ export const getErrorMessage = (error_code: string) => {
 	const code_name = `${SERVER_CODE}${error_code}`;
 	return ErrCodeMessage[code_name];
 };
+export const StandardResponse = (data: any, msg: string) => {
+	return {
+	  error: data ? false : true,
+	  errorMessage: msg,
+	  data,
+	}
+  }
