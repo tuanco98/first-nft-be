@@ -15,6 +15,8 @@ export interface ICollection {
   description: string;
   social: Social[];
   image_uri?: string;
+  create_at: Date;
+  update_at: Date;
 }
 export const InfoCollection: IndexDescription[] = [
   { key: { txid: 1, blockNumber: 1 }, unique: true, background: true },

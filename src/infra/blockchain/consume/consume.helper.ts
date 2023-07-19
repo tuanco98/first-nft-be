@@ -32,7 +32,8 @@ const GetPastEvents = async (
 	const events = await contract.getPastEvents({
 		fromBlock: options.fromBlock,
 		toBlock: options.toBlock,
-	}) as TEventData[];
-	return events;
+	});
+	const filter_events = events.filter(el =>  typeof el !== 'string') as TEventData[]
+	return filter_events;
 };
 export { getStartBlock, getConsumeOptions, GetPastEvents };
