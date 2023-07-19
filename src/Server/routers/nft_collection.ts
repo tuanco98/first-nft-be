@@ -5,7 +5,7 @@ const handler = nft_collection_get;
 
 const router: RouteOptions = {
   method: "GET",
-  url: "/collection-inf-get",
+  url: "/collection-detail-get",
   handler,
 };
 export { router as collectionInfGetRoute };

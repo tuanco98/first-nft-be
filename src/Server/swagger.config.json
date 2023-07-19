@@ -1,0 +1,119 @@
+{
+    "info": {
+        "title": "First nft API",
+        "description": "Testing the Fastify swagger API",
+        "version": "1.0.0"
+    },
+    "host": "localhost",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "Nft",
+            "description": "Nft related end-points"
+        },
+        {
+            "name": "Collection",
+            "description": "Collection related end-points"
+        }
+    ],
+    "definitions": {
+        "Nft": {
+            "type": "object",
+            "required": [
+                "token_id",
+                "owner_address",
+                "mint_txid",
+                "create_at",
+                "update_at",
+                "mint_at"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "token_id": {
+                    "type": "number"
+                },
+                "owner_address": {
+                    "type": "string"
+                },
+                "mint_txid": {
+                    "type": "string"
+                },
+                "img_uri": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "update_at": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "mint_at": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "Collection": {
+            "type": "object",
+            "required": [
+                "collection_name",
+                "contract_address",
+                "chain_network",
+                "description",
+                "update_at",
+                "create_at"
+            ],
+            "properties": {
+                "collection_name": {
+                    "type": "string"
+                },
+                "contract_address": {
+                    "type": "number"
+                },
+                "chain_network": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "social": { "$ref": "#/definitions/SocialArray" },
+                "img_uri": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "update_at": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "SocialArray": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string", "enum": ["twitter", "discord", "website"] },
+                "link": { "type": "string" }
+              }
+            }
+          }
+    }
+}
