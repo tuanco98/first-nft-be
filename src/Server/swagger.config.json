@@ -20,7 +20,7 @@
             "description": "Nft related end-points"
         },
         {
-            "name": "Collection",
+            "name": "Collections",
             "description": "Collection related end-points"
         }
     ],

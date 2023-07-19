@@ -4,8 +4,8 @@ import { collections } from "../mongo";
 
 const getDAO = () => ({
   common: collections.collection_info,
-  GetOneCollectionInfo: (address: string) => {
-    return collections.collection_info.findOne({ address });
+  GetOneCollectionInfo: (contract_address: string) => {
+    return collections.collection_info.findOne({ contract_address });
   },
   GetAllCollections: ( page = 0, pageSize = 10) => {
     return collections.collection_info
