@@ -4,16 +4,10 @@
         "description": "Testing the Fastify swagger API",
         "version": "1.0.0"
     },
-    "host": "localhost",
     "schemes": [
-        "http"
+        "http", "https"
     ],
-    "consumes": [
-        "application/json"
-    ],
-    "produces": [
-        "application/json"
-    ],
+    
     "tags": [
         {
             "name": "Nft",
@@ -91,7 +85,7 @@
                 "description": {
                     "type": "string"
                 },
-                "social": { "$ref": "#/definitions/SocialArray" },
+                "social": { "type": "string" },
                 "img_uri": {
                     "type": "string"
                 },

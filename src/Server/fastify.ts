@@ -1,8 +1,5 @@
-import { Collection } from "mongodb";
-// Import the framework and instantiate it
-import YAML from "yamljs";
+
 import Fastify from "fastify";
-// import fastifySwagger from "fastify-swagger";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { nftsRoute } from "./routers/nfts";
@@ -16,7 +13,6 @@ import swagger_config from './swagger.config.json'
 const fastify = Fastify({
   logger: true,
 });
-
 fastify.addHook("preHandler", (req, res, done) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
@@ -53,7 +49,6 @@ fastify.register(fastifySwaggerUi, {
 });
 
 fastify.register((fastify, opts, done) => {
-  // fastify.swagger({yaml: true})
   fastify.route(nftsRoute);
   fastify.route(collectionInfGetRoute);
   fastify.route(nftsDetailRoute);
