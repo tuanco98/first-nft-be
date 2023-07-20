@@ -1,0 +1,62 @@
+{
+    "params": {
+        "type": "object",
+        "required": [
+            "token_id"
+        ],
+        "properties": {
+            "token_id": {
+                "type": "number",
+                "description": "Id of NFT"
+            }
+        }
+    },
+    "tags": [
+        "Nft"
+    ],
+    "response": {
+        "200": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "token_id": {
+                            "type": "number"
+                        },
+                        "owner_address": {
+                            "type": "string"
+                        },
+                        "mint_txid": {
+                            "type": "string"
+                        },
+                        "img_uri": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "create_at": {
+                            "type": "string"
+                        },
+                        "update_at": {
+                            "type": "string"
+                        },
+                        "mint_at": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { nftsRoute } from "./routers/nfts";
 import { PORT_SERVER } from "../config";
-import { collectionInfGetRoute } from "./routers/nft_collection";
+import { collectionInfGetRoute } from "./routers/nft_collection_detail";
 import { nftsDetailRoute } from "./routers/nft_detail";
 import { nftsMintGteAtGetRoute } from "./routers/nft_mint_greate_or_equal_at_time";
 import { collectionRoute } from "./routers/nft_collection_list";
