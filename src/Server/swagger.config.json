@@ -7,7 +7,7 @@
     "schemes": [
         "http", "https"
     ],
-    
+    "host": "http://34.142.135.220:3003",
     "tags": [
         {
             "name": "Nft",

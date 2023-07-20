@@ -29,8 +29,7 @@ fastify.register(fastifySwagger, {
 fastify.register(fastifySwaggerUi, {
   routePrefix: "/docs",
   uiConfig: {
-    docExpansion: "full",
-    deepLinking: false,
+    docExpansion: "list",
   },
   uiHooks: {
     onRequest: function (request, reply, next) {
