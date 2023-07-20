@@ -16,6 +16,7 @@ const fastify = Fastify({
 fastify.addHook("preHandler", (req, res, done) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
+  res.header("Strict-Origin-When-Cross-Origin", "*");
   const isPreflight = /options/i.test(req.method);
   if (isPreflight) {
     return res.send();
@@ -30,14 +31,6 @@ fastify.register(fastifySwaggerUi, {
   routePrefix: "/docs",
   uiConfig: {
     docExpansion: "list",
-  },
-  uiHooks: {
-    onRequest: function (request, reply, next) {
-      next();
-    },
-    preHandler: function (request, reply, next) {
-      next();
-    },
   },
   staticCSP: true,
   transformStaticCSP: (header) => header,
