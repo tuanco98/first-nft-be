@@ -28,13 +28,13 @@
                 },
                 "data": {
                     "type": "object",
+                    "nullable": true,
                     "properties": {
                         "total": {
                             "type": "number"
                         },
                         "data": {
                             "type": "array",
-                            "nullable": true,
                             "items": {
                                 "type": "object",
                                 "properties": {
@@ -70,11 +70,11 @@
                                                 },
                                                 "link": {
                                                     "type": "string"
-                                                }
                                             }
                                         }
+                                    }
                                     },
-                                    "image_url": {
+                                    "image_uri": {
                                         "type": "string"
                                     },
                                     "create_at": {

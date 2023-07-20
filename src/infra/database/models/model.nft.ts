@@ -6,7 +6,7 @@ export interface INft {
     token_id: number
     owner_address: string
     mint_txid: string
-    img_uri?: string
+    image_uri?: string
     description?: string
     create_at: Date
     update_at: Date
