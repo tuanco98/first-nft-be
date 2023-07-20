@@ -1,13 +1,12 @@
 {
     "info": {
         "title": "First nft API",
-        "description": "Testing the Fastify swagger API",
+        "description": "Public api the first nft",
         "version": "1.0.0"
     },
     "schemes": [
         "http", "https"
     ],
-    "host": "http://34.142.135.220:3003",
     "tags": [
         {
             "name": "Nft",
