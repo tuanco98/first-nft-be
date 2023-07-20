@@ -5,9 +5,9 @@
         "version": "1.0.0"
     },
     "schemes": [
-        "http", "https"
+        "http",
+        "https"
     ],
-    
     "tags": [
         {
             "name": "Nft",
@@ -42,7 +42,7 @@
                 "mint_txid": {
                     "type": "string"
                 },
-                "img_uri": {
+                "image_uri": {
                     "type": "string"
                 },
                 "description": {
@@ -85,8 +85,10 @@
                 "description": {
                     "type": "string"
                 },
-                "social": { "type": "string" },
-                "img_uri": {
+                "social": {
+                    "type": "string"
+                },
+                "image_uri": {
                     "type": "string"
                 },
                 "create_at": {
@@ -102,12 +104,21 @@
         "SocialArray": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "type": { "type": "string", "enum": ["twitter", "discord", "website"] },
-                "link": { "type": "string" }
-              }
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "twitter",
+                            "discord",
+                            "website"
+                        ]
+                    },
+                    "link": {
+                        "type": "string"
+                    }
+                }
             }
-          }
+        }
     }
 }

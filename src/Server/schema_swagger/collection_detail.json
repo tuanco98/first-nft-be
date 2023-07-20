@@ -26,84 +26,54 @@
                 },
                 "data": {
                     "type": "object",
+                    "nullable": true,
                     "properties": {
-                        "total": {
-                            "type": "number"
+                        "collection_name": {
+                            "type": "string"
                         },
-                        "data": {
+                        "contract_address": {
+                            "type": "string"
+                        },
+                        "chain_network": {
+                            "type": "string",
+                            "enum": [
+                                "etherum",
+                                "bsc",
+                                "goerli"
+                            ]
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "social": {
                             "type": "array",
-                            "nullable": true,
                             "items": {
                                 "type": "object",
                                 "properties": {
-                                    "collection_name": {
-                                        "type": "string"
-                                    },
-                                    "contract_address": {
-                                        "type": "string"
-                                    },
-                                    "chain_network": {
+                                    "type": {
                                         "type": "string",
                                         "enum": [
-                                            "etherum",
-                                            "bsc",
-                                            "goerli"
+                                            "twitter",
+                                            "discord",
+                                            "website"
                                         ]
                                     },
-                                    "description": {
+                                    "link": {
                                         "type": "string"
-                                    },
-                                    "social": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "type": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                        "twitter",
-                                                        "discord",
-                                                        "website"
-                                                    ]
-                                                },
-                                                "link": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "image_url": {
-                                        "type": "string"
-                                    },
-                                    "create_at": {
-                                        "type": "string"
-                                    },
-                                    "update_at": {
-                                        "type": "string"
-                                    }
                                 }
                             }
                         }
+                        },
+                        "image_uri": {
+                            "type": "string"
+                        },
+                        "create_at": {
+                            "type": "string"
+                        },
+                        "update_at": {
+                            "type": "string"
+                        }
                     }
-                }
-            }
-        }
-    },
-    "SocialArray": {
-        "type": "array",
-        "items": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "twitter",
-                        "discord",
-                        "website"
-                    ]
-                },
-                "link": {
-                    "type": "string"
                 }
             }
         }

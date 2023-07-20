@@ -63,7 +63,7 @@
                                     "mint_txid": {
                                         "type": "string"
                                     },
-                                    "img_uri": {
+                                    "image_uri": {
                                         "type": "string"
                                     },
                                     "description": {
