@@ -1,0 +1,89 @@
+{
+    "query": {
+        "type": "object",
+        "required": [],
+        "properties": {
+            "page": {
+                "type": "number",
+                "description": "Page number (Optional)"
+            },
+            "pageSize": {
+                "type": "number",
+                "description": "Page size (?) for optional"
+            }
+        }
+    },
+    "tags":["Nft"],
+    "headers": {
+        "type": "object",
+        "properties": {
+            "message": {
+                "type": "string"
+            },
+            "signature": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "message",
+            "signature"
+        ]
+    },
+    "response": {
+        "200": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "total": {
+                            "type": "number"
+                        },
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "token_id": {
+                                        "type": "number"
+                                    },
+                                    "owner_address": {
+                                        "type": "string"
+                                    },
+                                    "mint_txid": {
+                                        "type": "string"
+                                    },
+                                    "img_uri": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "create_at": {
+                                        "type": "string"
+                                    },
+                                    "update_at": {
+                                        "type": "string"
+                                    },
+                                    "mint_at": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

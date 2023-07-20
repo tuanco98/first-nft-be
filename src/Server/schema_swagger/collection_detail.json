@@ -1,0 +1,111 @@
+{
+    "query": {
+        "type": "object",
+        "required": [
+            "contract_address"
+        ],
+        "properties": {
+            "contract_address": {
+                "type": "string",
+                "description": "contract address"
+            }
+        }
+    },
+    "tags": [
+        "Collections"
+    ],
+    "response": {
+        "200": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "total": {
+                            "type": "number"
+                        },
+                        "data": {
+                            "type": "array",
+                            "nullable": true,
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "collection_name": {
+                                        "type": "string"
+                                    },
+                                    "contract_address": {
+                                        "type": "string"
+                                    },
+                                    "chain_network": {
+                                        "type": "string",
+                                        "enum": [
+                                            "etherum",
+                                            "bsc",
+                                            "goerli"
+                                        ]
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "social": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "twitter",
+                                                        "discord",
+                                                        "website"
+                                                    ]
+                                                },
+                                                "link": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    },
+                                    "create_at": {
+                                        "type": "string"
+                                    },
+                                    "update_at": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "SocialArray": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "twitter",
+                        "discord",
+                        "website"
+                    ]
+                },
+                "link": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

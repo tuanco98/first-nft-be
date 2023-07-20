@@ -8,9 +8,7 @@ type InputParams = {
 export const nft_collection_get = async (request: FastifyRequest) => {
   try {
     const { contract_address } = request.query as InputParams;
-    if (!contract_address) {
-      throw ErrMsg(ERROR_CODE.MISSING_PARAMS, "contract_address");
-    }
+    if (!contract_address) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, "contract_address");
     const fetch_data = await DAO.collection_info.GetOneCollectionInfo( contract_address );
     return StandardResponse(fetch_data, "Success!");
   } catch (e: any) {

@@ -7,18 +7,18 @@ const getDAO = () => ({
   GetOneNFTInfo: (token_id: number) => {
     return collections.nfts.findOne({ token_id });
   },
-  GetAllNFT: ( owner_address: string, page = 0, pageSize = 10) => {
+  GetAllNFT: ( owner_address: string, page: number, pageSize: number) => {
     return collections.nfts
       .find({owner_address})
-      .limit(page)
+      .limit(pageSize)
       .skip(page * pageSize)
       .toArray();
   },
-  GetNFTByTime: (create_at: number, page = 0, pageSize = 10) => {
+  GetNFTByTime: (create_at: number, page: number, pageSize: number) => {
     const dateFormat = new Date(create_at);
     return collections.nfts
       .find({ create_at: { $gte: dateFormat } })
-      .limit(page)
+      .limit(pageSize)
       .skip(page * pageSize)
       .toArray();
   },

@@ -11,7 +11,6 @@ export const list_nfts_get = async (
   try{
     const {  page = 0, pageSize = 10 } = request.query as InputParams;
     const { message, signature } = request.headers
-
     if(!message) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'message');
     if(!signature) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'signature');
     const owner_address =  getAddressRecover(message as string, signature as string)
