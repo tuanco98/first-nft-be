@@ -7,10 +7,10 @@ const getDAO = () => ({
   GetOneCollectionInfo: (contract_address: string) => {
     return collections.collection_info.findOne({ contract_address });
   },
-  GetAllCollections: ( page = 0, pageSize = 10) => {
+  GetAllCollections: ( page: number, pageSize: number) => {
     return collections.collection_info
       .find({})
-      .limit(page)
+      .limit(pageSize)
       .skip(page * pageSize)
       .toArray();
   },

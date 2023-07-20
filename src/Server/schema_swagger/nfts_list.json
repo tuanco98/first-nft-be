@@ -1,5 +1,5 @@
 {
-    "params": {
+    "query": {
         "type": "object",
         "required": [],
         "properties": {
@@ -41,6 +41,7 @@
                 },
                 "data": {
                     "type": "object",
+                    "nullable": true,
                     "properties": {
                         "total": {
                             "type": "number"

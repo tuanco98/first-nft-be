@@ -8,9 +8,8 @@ type InputParams = {
 export const nft_detail = async (request: FastifyRequest) => {
   try {
     const { token_id } = request.query as InputParams;
-    if ( !token_id ) {
-      throw ErrMsg(ERROR_CODE.MISSING_PARAMS, "token id");
-    }
+    
+    if (!token_id) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, "token id")
     const fetch_data = await DAO.nfts.GetOneNFTInfo( token_id );
     return StandardResponse(fetch_data, "Success!");
   } catch (e: any) {

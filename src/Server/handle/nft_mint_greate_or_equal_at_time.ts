@@ -10,10 +10,8 @@ export const nft_mint_greate_or_equal_at_time_get = async (
   request: FastifyRequest
 ) => {
   try{
-    const { create_at, page, pageSize } = request.query as InputParams;
-    if( !create_at ){
-      throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'create at');
-    }
+    const { create_at, page = 0, pageSize = 10 } = request.query as InputParams;
+    if( !create_at ) throw ErrMsg(ERROR_CODE.MISSING_PARAMS, 'create at')
     const fetch_data = await DAO.nfts.GetNFTByTime(
       Number(create_at),
       page,

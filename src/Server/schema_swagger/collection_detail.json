@@ -1,5 +1,5 @@
 {
-    "params": {
+    "query": {
         "type": "object",
         "required": [
             "contract_address"
@@ -32,6 +32,7 @@
                         },
                         "data": {
                             "type": "array",
+                            "nullable": true,
                             "items": {
                                 "type": "object",
                                 "properties": {

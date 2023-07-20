@@ -1,5 +1,5 @@
 {
-    "params": {
+    "query": {
         "type": "object",
         "required": [],
         "properties": {
@@ -34,6 +34,7 @@
                         },
                         "data": {
                             "type": "array",
+                            "nullable": true,
                             "items": {
                                 "type": "object",
                                 "properties": {

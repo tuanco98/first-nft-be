@@ -10,7 +10,7 @@ export const list_collection_get = async (
   request: FastifyRequest
 ) => {
   try{
-    const { page = 0, pageSize = 100 } = request.query as InputParams;
+    const { page = 0, pageSize = 10 } = request.query as InputParams;
     const [total, data] = await Promise.all([
       DAO.collection_info.GetTotal({}),
       DAO.collection_info.GetAllCollections( page, pageSize)
